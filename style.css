@@ -57,6 +57,7 @@ body::before {
     width: 90%;
     max-width: 1200px;
     text-align: center;
+    padding-top: 10px;
 }
 
 .top-label {
