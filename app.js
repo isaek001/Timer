@@ -8,6 +8,7 @@
         const seconds = document.getElementById('seconds');
         const status = document.getElementById('statusText');
         const finished = document.getElementById('finished');
+        const fullscreenButton = document.getElementById('fullscreenButton');
         let interval = null;
 
         function update() {
@@ -39,20 +40,22 @@
             interval = setInterval(update, 250);
         }
 
-        async function enterFullscreen() {
-            if (document.fullscreenElement || typeof document.documentElement.requestFullscreen !== 'function') return;
-
+        fullscreenButton.addEventListener('click', async () => {
             try {
-                await document.documentElement.requestFullscreen();
-                document.removeEventListener('pointerdown', enterFullscreen);
-                document.removeEventListener('keydown', enterFullscreen);
+                if (document.fullscreenElement) {
+                    await document.exitFullscreen();
+                } else {
+                    await document.documentElement.requestFullscreen();
+                }
             } catch {
+                fullscreenButton.textContent = 'FULLSCREEN UNAVAILABLE';
             }
-        }
+        });
 
-        document.addEventListener('pointerdown', enterFullscreen);
-        document.addEventListener('keydown', enterFullscreen);
-        enterFullscreen();
+        document.addEventListener('fullscreenchange', () => {
+            fullscreenButton.textContent = document.fullscreenElement ? 'EXIT FULLSCREEN' : 'ENTER FULLSCREEN';
+            fullscreenButton.setAttribute('aria-pressed', String(Boolean(document.fullscreenElement)));
+        });
     }
 
     if (document.readyState === 'loading') {

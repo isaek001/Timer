@@ -146,6 +146,25 @@ h1 span {
     color: #40ffb2;
 }
 
+#fullscreenButton {
+    margin-top: 35px;
+    background: rgba(25, 45, 75, .7);
+    border: 1px solid #28547b;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 13px 25px;
+}
+
+#fullscreenButton:hover,
+#fullscreenButton:focus-visible {
+    background: #1269a0;
+}
+
 .footer {
     margin-top: 65px;
     color: #64748b;
