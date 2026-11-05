@@ -1,411 +1,67 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HACK JOS | Countdown</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  min-height: 100vh;
-  background: #050914;
-  color: white;
-  font-family: 'Inter', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-}
-
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0,180,255,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,180,255,.055) 1px, transparent 1px);
-  background-size: 50px 50px;
-  mask-image: linear-gradient(to bottom, black, transparent);
-}
-
-.glow {
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  border-radius: 50%;
-  filter: blur(130px);
-  opacity: .25;
-  pointer-events: none;
-}
-
-.blue {
-  background: #006eff;
-  top: -200px;
-  left: -150px;
-}
-
-.purple {
-  background: #751dff;
-  bottom: -200px;
-  right: -150px;
-}
-
-.container {
-  position: relative;
-  z-index: 2;
-  width: 90%;
-  max-width: 1200px;
-  text-align: center;
-}
-
-.top-label {
-  color: #39c8ff;
-  font-size: 13px;
-  letter-spacing: 7px;
-  font-weight: 700;
-  margin-bottom: 25px;
-}
-
-h1 {
-  font-size: clamp(55px, 10vw, 115px);
-  font-weight: 900;
-  letter-spacing: -5px;
-  line-height: 1;
-}
-
-h1 span {
-  color: #36c5ff;
-  text-shadow: 0 0 35px rgba(54,197,255,.5);
-}
-
-.tagline {
-  color: #9baac3;
-  letter-spacing: 5px;
-  font-size: 13px;
-  margin-top: 20px;
-}
-
-.line {
-  height: 1px;
-  width: 100px;
-  margin: 45px auto;
-  background: linear-gradient(90deg, transparent, #35c5ff, transparent);
-}
-
-.countdown {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(8px, 3vw, 35px);
-}
-
-.time-box {
-  min-width: 0;
-}
-
-.number {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(48px, 10vw, 115px);
-  font-weight: 700;
-  color: white;
-  text-shadow: 0 0 25px rgba(35,175,255,.3);
-  font-variant-numeric: tabular-nums;
-}
-
-.unit {
-  display: block;
-  color: #42caff;
-  font-size: 11px;
-  letter-spacing: 5px;
-  margin-top: 12px;
-}
-
-.colon {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(35px, 7vw, 75px);
-  color: #35c5ff;
-  padding-bottom: 25px;
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  50% { opacity: .3; }
-}
-
-.status {
-  margin-top: 55px;
-  color: #9baac3;
-  font-size: 12px;
-  letter-spacing: 4px;
-}
-
-.status span {
-  color: #40ffb2;
-}
-
-.controls {
-  margin-top: 35px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-button {
-  background: rgba(25,45,75,.7);
-  border: 1px solid #28547b;
-  color: white;
-  padding: 13px 25px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-button:hover {
-  background: #1269a0;
-}
-
-.start {
-  background: #087bc1;
-  border-color: #36c5ff;
-}
-
-.footer {
-  margin-top: 65px;
-  color: #64748b;
-  font-size: 11px;
-  letter-spacing: 3px;
-}
-
-#finished {
-  display: none;
-  color: #40ffb2;
-  font-size: 20px;
-  margin-top: 25px;
-  letter-spacing: 4px;
-}
-
-@media (max-width: 500px) {
-  .top-label { letter-spacing: 4px; }
-  h1 { letter-spacing: -2px; }
-  .unit { letter-spacing: 2px; font-size: 9px; }
-  .tagline { letter-spacing: 2px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HACK JOS | Countdown</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="glow blue"></div>
-<div class="glow purple"></div>
+  <div class="glow blue"></div>
+  <div class="glow purple"></div>
 
-<main class="container">
+  <main class="container">
 
-  <div class="top-label">WELCOME TO THE FUTURE</div>
+    <div class="top-label">WELCOME TO THE FUTURE</div>
 
-  <h1>HACK <span>JOS</span></h1>
+    <h1>HACK <span>JOS</span></h1>
 
-  <div class="tagline">
-    48 HOURS OF INNOVATION
-  </div>
-
-  <div class="line"></div>
-
-  <div class="countdown">
-
-    <div class="time-box">
-      <div class="number" id="hours">48</div>
-      <span class="unit">HOURS</span>
+    <div class="tagline">
+      48 HOURS OF INNOVATION
     </div>
 
-    <div class="colon">:</div>
+    <div class="line"></div>
 
-    <div class="time-box">
-      <div class="number" id="minutes">00</div>
-      <span class="unit">MINUTES</span>
+    <div class="countdown">
+
+      <div class="time-box">
+        <div class="number" id="hours">00</div>
+        <span class="unit">HOURS</span>
+      </div>
+
+      <div class="colon">:</div>
+
+      <div class="time-box">
+        <div class="number" id="minutes">00</div>
+        <span class="unit">MINUTES</span>
+      </div>
+
+      <div class="colon">:</div>
+
+      <div class="time-box">
+        <div class="number" id="seconds">00</div>
+        <span class="unit">SECONDS</span>
+      </div>
+
     </div>
 
-    <div class="colon">:</div>
+    <div id="finished">TIME IS UP! 🚀</div>
 
-    <div class="time-box">
-      <div class="number" id="seconds">00</div>
-      <span class="unit">SECONDS</span>
+    <div class="status">
+      <span id="statusText">● READY TO LAUNCH</span>
+    </div>
+    <button id="fullscreenButton" type="button" aria-pressed="false">ENTER FULLSCREEN</button>
+    <div class="footer">
+      BUILD. INNOVATE. CREATE.
     </div>
 
-  </div>
+  </main>
 
-  <div id="finished">TIME IS UP! 🚀</div>
-
-  <div class="status">
-    <span id="statusText">● READY TO LAUNCH</span>
-  </div>
-
-  <div class="controls">
-    <button class="start" onclick="startTimer()">START</button>
-    <button onclick="pauseTimer()">PAUSE</button>
-    <button onclick="resetTimer()">RESET</button>
-    <button onclick="fullscreen()">FULLSCREEN</button>
-  </div>
-
-  <div class="footer">
-    BUILD. INNOVATE. CREATE.
-  </div>
-
-</main>
-
-<script>
-const DURATION = 23 * 45 * 60 * 1000;
-
-let endTime = null;
-let remaining = DURATION;
-let interval = null;
-let running = false;
-
-function display() {
-  const h = Math.floor(remaining / 3600000);
-  const m = Math.floor((remaining % 3600000) / 60000);
-  const s = Math.floor((remaining % 60000) / 1000);
-
-  document.getElementById('hours').textContent =
-    String(h).padStart(2, '0');
-
-  document.getElementById('minutes').textContent =
-    String(m).padStart(2, '0');
-
-  document.getElementById('seconds').textContent =
-    String(s).padStart(2, '0');
-}
-
-function save() {
-  localStorage.setItem('hackjosTimer', JSON.stringify({
-    endTime,
-    remaining,
-    running
-  }));
-}
-
-function update() {
-  if (!running) return;
-
-  remaining = Math.max(0, endTime - Date.now());
-  display();
-
-  if (remaining <= 0) {
-    running = false;
-    clearInterval(interval);
-    interval = null;
-    document.getElementById('statusText').textContent =
-      '● EVENT COMPLETED';
-    document.getElementById('finished').style.display = 'block';
-    save();
-  }
-}
-
-function startTimer() {
-  if (running || remaining <= 0) return;
-
-  running = true;
-  endTime = Date.now() + remaining;
-
-  document.getElementById('statusText').textContent =
-    '● COUNTDOWN IN PROGRESS';
-
-  clearInterval(interval);
-  interval = setInterval(update, 250);
-
-  update();
-  save();
-}
-
-function pauseTimer() {
-  if (!running) return;
-
-  update();
-  if (!running) return;
-
-  running = false;
-  clearInterval(interval);
-  interval = null;
-
-  document.getElementById('statusText').textContent =
-    '● COUNTDOWN PAUSED';
-
-  save();
-}
-
-function resetTimer() {
-  if (!confirm('Reset the countdown to 48 hours?')) return;
-
-  running = false;
-  clearInterval(interval);
-  interval = null;
-
-  remaining = DURATION;
-  endTime = null;
-
-  document.getElementById('statusText').textContent =
-    '● READY TO LAUNCH';
-
-  document.getElementById('finished').style.display = 'none';
-
-  display();
-  save();
-}
-
-function fullscreen() {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
-  } else {
-    document.exitFullscreen();
-  }
-}
-
-// Restore timer after page refresh
-function restore() {
-  const saved = localStorage.getItem('hackjosTimer');
-
-  if (saved) {
-    const data = JSON.parse(saved);
-
-    remaining = data.remaining;
-    endTime = data.endTime;
-    running = data.running;
-
-    if (running) {
-      update();
-
-      if (running) {
-        interval = setInterval(update, 250);
-        document.getElementById('statusText').textContent =
-          '● COUNTDOWN IN PROGRESS';
-      }
-    } else if (remaining <= 0) {
-      remaining = 0;
-      document.getElementById('statusText').textContent =
-        '● EVENT COMPLETED';
-      document.getElementById('finished').style.display = 'block';
-    } else {
-      document.getElementById('statusText').textContent =
-        '● COUNTDOWN PAUSED';
-    }
-  }
-
-  display();
-}
-
-restore();
-</script>
+  <script src="app.js"></script>
 
 </body>
+
 </html>
