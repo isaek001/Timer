@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
 * {
     margin: 0;
@@ -10,7 +10,7 @@ body {
     min-height: 100vh;
     background: #050914;
     color: white;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,34 +144,6 @@ h1 span {
 
 .status span {
     color: #40ffb2;
-}
-
-.controls {
-    margin-top: 35px;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-button {
-    background: rgba(25, 45, 75, .7);
-    border: 1px solid #28547b;
-    color: white;
-    padding: 13px 25px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-button:hover {
-    background: #1269a0;
-}
-
-.start {
-    background: #087bc1;
-    border-color: #36c5ff;
 }
 
 .footer {
